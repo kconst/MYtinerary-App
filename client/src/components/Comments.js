@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getComments} from '../actions/commentActions';
-import axios from 'axios';
+import {getComments, postComments} from '../actions/commentActions';
+// import axios from 'axios';
 // import PropTypes from 'prop-types';
 
 class CommentForm extends Component {
     constructor(props) {
       super(props);
-      this.state = {value: ''};
+      this.state = {comment: '',
+                    itinerary_id: ''};
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,29 +23,31 @@ class CommentForm extends Component {
             }
   
     handleChange(event) {
-      this.setState({value: event.target.value});
+      this.setState({comment: event.target.value,itinerary_id: this.props.itineraryLink});
     }
   
+    user = React.createRef();
     comment = React.createRef();
+    commentForm = React.createRef();
     
     handleSubmit(event) {
-        const comment = {comment:"holasss"};
-    //   alert('A comment was submitted: ' + this.state.value);
       event.preventDefault();
-      axios.post(`/api/comments`, comment).then(res => 
-      console.log(res));
+    //const itinerary_id = this.props.property;
+    //const user = this.user.value;
+    //const comment = this.state.value;
+        this.props.postComments(this.state);
     }
   
     render() {
-        console.log(this.state.value)
-
-       console.log( this.props.comment)
+        console.log(this.props.comment)
+    console.log(this.state.value);
+   // console.log( this.props.comment)
       return (
     <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             Comments
-            <input type="text" ref={this.comments} value={this.state.value} onChange={this.handleChange} />
+            <input type="text" placeholder="Your comment..." ref={this.comments} value={this.state.value} onChange={this.handleChange} />
           </label>
           <button type="submit" value="Submit"> Add Comment</button>
           {/* <i class="material-icons">navigate_next</i> */}
@@ -68,4 +71,4 @@ class CommentForm extends Component {
     comment: state.reducerFour
   });
 
-  export default connect(mapStateToProps, {getComments})(CommentForm);
+  export default connect(mapStateToProps, {getComments, postComments})(CommentForm);

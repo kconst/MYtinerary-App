@@ -1,18 +1,25 @@
-import {COMMENT_ACQUIRED} from '../actions/types';
+import {COMMENT_ACQUIRED, COMMENT_POSTED} from '../actions/types';
 
 const initState = {
-    comments: []
+    comments: [],
+
+
     }
     
     const commentReducer = (state = initState, action) => {
     console.log(action.payload);
-
+    console.log(state.comments)
         switch (action.type) {
             case COMMENT_ACQUIRED:
-        return {
+            return {
             ...state,
             comments: action.payload
         };
+            case COMMENT_POSTED:
+            return {
+            ...state,
+            comments: [action.payload, ...state.comments]
+            }
         default:
         return state;
     }

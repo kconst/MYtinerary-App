@@ -27,9 +27,14 @@ toggle = (event) =>{
     event.preventDefault();
     // e.persist();
     console.log(event.target.id);
+    this.state.showActivities === event.target.id ? 
     this.setState({
+        showActivities: ""
+    
+    }):this.setState({
         showActivities: event.target.id
-    });
+    
+    })
 
     console.log(this.state.showActivities);
 }        
@@ -40,15 +45,21 @@ render() {
     <div><h4>Available MYtineraries</h4>
     {this.props.Itineraries.itineraries.map(itinerary => {
         return(
-        <div key={itinerary._id}>
+        <div className="itineraryContainer" key={itinerary._id}>
             <img className = "profilePic" src={itinerary.profilePic} alt="userProfilePic"/>
             <div>{itinerary.title}</div>
             <div>{itinerary.rating} {itinerary.duration} {itinerary.cost}</div>
             <div>{itinerary.hashtags}</div>
 
-            <button onClick={this.toggle} id={itinerary._id}>View All</button>
+            {/* <button onClick={this.toggle} id={itinerary._id}>View All</button> */}
            
            {this.state.showActivities === itinerary._id ? <Activities id={itinerary._id}/> : null}
+
+           {/* <button onClick={this.toggle} id={itinerary._id}>View Less</button> */}
+
+           {this.state.showActivities === itinerary._id ? <button onClick={this.toggle} id={itinerary._id}>View Less</button> : <button onClick={this.toggle} id={itinerary._id}>View All</button>}
+
+           
             {/* <Toggle
                 render={({ on, toggle}) => (
                     <div>

@@ -63,7 +63,7 @@ router.get('/comments', function(req, res){
 //get comments by itinerary
 
 router.get('/comments/:itinerary_id', function(req, res){
-    console.log("in")
+    console.log("in",req.params.itinerary_id)
     Comment.find({itinerary_id:req.params.itinerary_id}).then(results => res.send(results));
 });
 
@@ -114,7 +114,7 @@ router.post('/activity', upload.single('activityPic'), (req, res) => {
 //add comments to mlab db
 
 router.post('/comments', (req, res) => {
-    console.log("here",req.body.comment);
+    console.log("here",req.body);
     const comment = Comment({
         itinerary_id: req.body.itinerary_id,
         user: req.body.user,
