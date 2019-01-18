@@ -14,7 +14,7 @@ const User = () => {
          </button>
        }
      >
-       <NavLink to="/signup">Create Account</NavLink>
+       <NavLink to="/accountform">Create Account</NavLink>
        <NavLink to="/login">Login</NavLink>
      </Modal>
    </Fragment>

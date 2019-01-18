@@ -7,8 +7,6 @@ const initState = {
     }
     
     const commentReducer = (state = initState, action) => {
-    console.log(action.payload);
-    console.log(state.comments)
         switch (action.type) {
             case COMMENT_ACQUIRED:
             return {

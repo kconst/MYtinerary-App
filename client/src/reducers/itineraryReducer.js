@@ -5,8 +5,6 @@ const initState = {
     }
     
     const itineraryReducer = (state = initState, action) => {
-    console.log(action.payload);
-
         switch (action.type) {
             case ITINERARY_ACQUIRED:
         return {

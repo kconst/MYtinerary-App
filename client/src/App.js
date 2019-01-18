@@ -5,8 +5,8 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Cities from './components/Cities';
 import Login from './components/Login';
-import SignUp from './components/SignUp';
 import Itinerary from './components/Itinerary';
+import AccountForm from './components/AccountForm';
 // import Activities from './components/Activities';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
         <Route path='/itinerary/:id' component={Itinerary} />
         {/* <Route path='/activity/:id/' component={Activities} /> */}
         <Route path='/login' component={Login} />
-        <Route path='/signup' component={SignUp} />
+        <Route path='/accountform' component={AccountForm} />
         <Footer/>
       </div>
       </BrowserRouter>

@@ -22,8 +22,9 @@ class CommentForm extends Component {
               
             }
   
-    handleChange(event) {
+    handleChange (event) {
       this.setState({comment: event.target.value,itinerary_id: this.props.itineraryLink});
+     
     }
   
     user = React.createRef();
@@ -39,6 +40,7 @@ class CommentForm extends Component {
     }
   
     render() {
+      console.log(this.state.comment);
         console.log(this.props.comment)
     console.log(this.state.value);
    // console.log( this.props.comment)
